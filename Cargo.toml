@@ -38,6 +38,7 @@ tokio-tungstenite = { version = "0.10", default-features = false, optional = tru
 urlencoding = "1.0.0"
 pin-project = "0.4.5"
 tokio-rustls = { version = "0.12.2", optional = true }
+diesel = { version = "1.4.*", features = ["postgres", "r2d2"], optional = true }
 
 [dev-dependencies]
 pretty_env_logger = "0.4"
@@ -51,6 +52,7 @@ default = ["multipart", "websocket"]
 websocket = ["tokio-tungstenite"]
 tls = ["tokio-rustls"]
 compression = ["async-compression"]
+dieselpool = ["diesel"]
 
 [profile.release]
 codegen-units = 1
@@ -71,6 +73,10 @@ required-features = ["websocket"]
 [[example]]
 name = "compression"
 required-features = ["compression"]
+
+[[example]]
+name = "todos-with-diesel"
+required-features = ["dieselpool"]
 
 [[example]]
 name = "unix_socket"
